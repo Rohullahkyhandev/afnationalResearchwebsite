@@ -17,6 +17,7 @@ import {
   PopoverTrigger,
 } from "@radix-ui/react-popover";
 import { Link } from "react-router";
+import { ThemeToggle } from "./ThemeToggle";
 
 
 export function ResearchNavigation() {
@@ -43,9 +44,9 @@ export function ResearchNavigation() {
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a
+                        <Link
+                          to="/research-areas"
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/research/health"
                         >
                           <div className="mb-2 mt-4 flex items-center gap-2">
                             <BarChart2 className="h-4 w-4" />
@@ -56,23 +57,23 @@ export function ResearchNavigation() {
                           <p className="text-sm leading-tight text-muted-foreground">
                             Biomedical, clinical, and public health research
                           </p>
-                        </a>
+                        </Link>
                       </NavigationMenuLink>
                     </li>
                     <ListItem
-                      href="/research/technology"
+                      href="/research-areas"
                       title="Technology & Engineering"
                     >
                       Cutting-edge innovations in computing, materials, and
                       systems
                     </ListItem>
                     <ListItem
-                      href="/research/environment"
+                      href="/research-areas"
                       title="Environmental Science"
                     >
                       Climate change, biodiversity, and sustainability studies
                     </ListItem>
-                    <ListItem href="/research/social" title="Social Sciences">
+                    <ListItem href="/research-areas" title="Social Sciences">
                       Human behavior, economics, and policy research
                     </ListItem>
                   </ul>
@@ -87,18 +88,18 @@ export function ResearchNavigation() {
                 <NavigationMenuContent>
                   <ul className="grid w-[300px] gap-3 p-4">
                     <ListItem
-                      href="/publications/journals"
+                      href="/publications"
                       title="Research Journals"
                     >
                       Peer-reviewed academic publications
                     </ListItem>
                     <ListItem
-                      href="/publications/reports"
+                      href="/publications"
                       title="Technical Reports"
                     >
                       In-depth analysis and white papers
                     </ListItem>
-                    <ListItem href="/publications/data" title="Open Data">
+                    <ListItem href="/publications" title="Open Data">
                       Publicly available research datasets
                     </ListItem>
                   </ul>
@@ -107,20 +108,24 @@ export function ResearchNavigation() {
 
               {/* About */}
               <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/about"
-                  className={`${navigationMenuTriggerStyle()} text-sm`}
-                >
-                  About Us
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/about"
+                    className={`${navigationMenuTriggerStyle()} text-sm`}
+                  >
+                    About Us
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
                <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/request-passage"
-                  className={`${navigationMenuTriggerStyle()} text-sm`}
-                >
-                   Request passage
+                <NavigationMenuLink asChild>
+                  <Link
+                    to="/request-passage"
+                    className={`${navigationMenuTriggerStyle()} text-sm`}
+                  >
+                     Request passage
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
@@ -132,19 +137,19 @@ export function ResearchNavigation() {
                 <NavigationMenuContent>
                   <ul className="grid w-[300px] gap-3 p-4">
                     <ListItem
-                      href="/international/collaborations"
+                      href="/international"
                       title="Collaborations"
                     >
                       Global research partnerships
                     </ListItem>
                     <ListItem
-                      href="/international/funding"
+                      href="/international"
                       title="Funding Programs"
                     >
                       International grant opportunities
                     </ListItem>
                     <ListItem
-                      href="/international/conferences"
+                      href="/international"
                       title="Conferences"
                     >
                       Upcoming international events
@@ -181,7 +186,7 @@ export function ResearchNavigation() {
          </Avatar>
 
 
-          {/* <ModeToggle /> */}
+          <ThemeToggle />
         </div>
       </div>
     </header>
@@ -201,8 +206,8 @@ function ListItem({
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
-          href={href}
+        <Link
+          to={href}
           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
           {...props}
         >
@@ -210,7 +215,7 @@ function ListItem({
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
