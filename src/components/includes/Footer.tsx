@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { Link } from "react-router"
 import { 
   Github, 
   Twitter, 
@@ -33,11 +34,11 @@ export function ResearchFooter() {
               Research Resources
             </h3>
             <ul className="space-y-3">
-              <FooterLink href="/labs" text="Research Labs" />
+              <FooterLink href="/research-areas" text="Research Labs" />
               <FooterLink href="/publications" text="Publications" />
-              <FooterLink href="/datasets" text="Open Datasets" />
-              <FooterLink href="/grants" text="Funding Opportunities" />
-              <FooterLink href="/collaborate" text="Collaborate With Us" />
+              <FooterLink href="/publications" text="Open Datasets" />
+              <FooterLink href="/about" text="Funding Opportunities" />
+              <FooterLink href="/about" text="Collaborate With Us" />
             </ul>
           </motion.div>
 
@@ -161,13 +162,13 @@ export function ResearchFooter() {
 function FooterLink({ href, text }: { href: string; text: string }) {
   return (
     <motion.li whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
-      <a 
-        href={href} 
+      <Link 
+        to={href} 
         className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group"
       >
         <ArrowRight className="h-3 w-3 text-white group-hover:text-blue-400 transition-all" />
           {text}
-      </a>
+      </Link>
     </motion.li>
   )
 }
